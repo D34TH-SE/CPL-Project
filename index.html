@@ -3,33 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jumpstart Chatbot</title>
+    <title>Jumpstart</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
+
 </head>
 <body>
-    <main class="container">
-        <header class ="header">
-            <h2 class ="title"> Jumpstart Chatbot </h2>
-        </header>
-        <div class="content" id="content">
-            <section class="answer-section">
-                Hello! How can I help you today?👋😊
-            </section>
-            <!--<section class="question-section">
-                Hello!
-            </section> -->
+
+<!-- Header -->
+<header class="main-header">
+    <div class="logo">JUMPSTART</div>
+    <nav class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Shop</a>
+        <a href="#">Promotion</a>
+        <a href="#">Pages</a>
+        <a href="#">Blog</a>
+        <a href="#">Contact</a>
+    </nav>
+    <div class="header-icons">
+        <select>
+            <option>USD</option>
+        </select>
+        <select>
+            <option>English</option>
+        </select>
+        <a href="#">My Account</a>
+        <span class="cart-icon">🛒<span class="cart-count">2</span></span>
+    </div>
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-image">
+    <img src="images/Homepage1.webp" alt="Hero Fashion" />
+  </div>
+  <div class="hero-text">
+    <p>SPRING / SUMMER COLLECTION</p>
+    <h1>Get up to 30% Off<br>New Arrivals</h1>
+    <button>Shop Now</button>
+  </div>
+</section>
+
+
+<!-- Categories -->
+<section class="categories">
+    <div class="category">
+        <img src="images/Homepage2.png" alt="Women's Fashion" />
+        <span>WOMEN'S</span>
+    </div>
+    <div class="category">
+        <img src="images/Homepage3.jpg" alt="Accessories" />
+        <span>ACCESSORIES</span>
+    </div>
+    <div class="category">
+        <img src="images/Homepage4.jpg" alt="Men's Fashion" />
+        <span>MEN'S</span>
+    </div>
+</section>
+
+    
+    <button class="chat-toggle" id="chatToggle">
+    💬
+</button>   
+    <section class="chat-window">
+        <div class="chat-header"> 🤖Jumpstart Bot</div>
+        <div class="chat">
+            <div class="model">
+                <p> Hi, How can I help you today?</p>
+            </div>
+            
         </div>
-        <footer class="chat-form">
-            <input class="chat-input" id="chatInput" type="text" placeholder="Type message" autocomplete="off">
-            <button class="send-button" id="sendButton">
-                <svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24"  
-                fill="currentColor" viewBox="0 0 24 24" >
-                <!--Boxicons v3.0 https://boxicons.com | License  https://docs.boxicons.com/free-->
-                <path d="m21.41 11.09-18-8a1 1 0 0 0-1.09.19c-.29.28-.39.7-.25 1.08l2.87 7.65-2.87 7.65c-.14.38-.04.8.25 1.08a1 1 0 0 0 1.1.18l18-8a.998.998 0 0 0 0-1.82ZM4.78 18.12l1.23-3.27V15l6-3-6-3v.15L4.78 5.88 18.54 12z"></path>
-                </svg>
+        <div class="input-area">
+            <input placeholder="Ask me anything" type="text">
+            <button>
+                <img src="images/send-icon.png" alt="send-icon">
             </button>
-        </footer>
-    </main>
+        </div>
+    </section>
+
+
+    <script type="importmap">
+        {
+            "imports": {
+                "@google/generative-ai": "https://esm.run/@google/generative-ai"
+            }
+        }
+
+    </script>
+
+    <script type="module" src="script.js"></script>
 </body>
 </html>
