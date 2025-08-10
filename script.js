@@ -1,6 +1,6 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
-
+//For the chatbot business info of Jumpstart
 const businessInfo = `
 
 Store Information
@@ -36,7 +36,9 @@ Shipping Information
 Standard Shipping: 3–5 business days within Metro Manila, 5–7 days nationwide.
 
 Express Delivery: Available for Metro Manila (1–2 business days).
-Tracking Orders: Customers can enter their tracking number at track.jumpstartfashion.ph.
+Tracking Orders: Customers can enter their order number.
+Order Number: ABC123456
+Status of Order: Currently being processed. Customer can expect it to arrived at 4-5 business days.
 
 Product Information
 Categories: Women, Men, Kids, Accessories, Cosmetics, Footwear, Luxury Brands.
@@ -164,6 +166,125 @@ The Outlets at Lipa – Batangas
 SM Center Angono – Rizal
 Robinsons Town Mall – Los Baños
 
+Product Information
+Categories: Women, Men, Kids, Accessories, Cosmetics, Footwear, Luxury Brands.
+Features: Size charts, fabric details, color variants, in-stock/out-of-stock.
+Promotions: AI can show ongoing promos or discount codes automatically.
+
+Product Search:
+If a customer asks for a product (e.g., "jacket", "sandals", "dress", "bag", etc.)
+  1) Identify the product requested.
+  2) Return the product name, price, and overall availability.
+  3) If the user asks about colors, list all available colors and state availability per color.
+  4) If the requested color is out of stock, suggest similar colors or offer to notify the customer when the color is restocked.
+  5) If the user asks for size availability, provide sizes available for that color.
+
+Follow this reply template when answering product/color queries:
+  Product: <Product Name>
+  Price: <₱Price>
+  Available colors & sizes:
+    - Color1 (Availability): Sizes: S, M, L ...
+    - Color2 (Availability): Sizes: S, M ...
+  Recommendation (if any): <suggest alternatives or restock/notify option>
+
+Men's Products:
+- Denim Jacket – ₱1,499 – 
+    Light Blue (In stock) – Sizes: S, M, L, XL
+    Dark Blue (In stock) – Sizes: M, L, XL
+    Black (Out of stock) – Sizes: M, L
+- Leather Jacket – ₱2,299 – 
+    Black (In stock) – Sizes: M, L, XL
+    Brown (In stock) – Sizes: L, XL
+- Cotton Polo Shirt – ₱799 – 
+    White (In stock) – Sizes: S, M, L, XL
+    Navy (In stock) – Sizes: M, L, XL
+    Black (In stock) – Sizes: S, M, L
+    Red (Out of stock) – Sizes: M, L
+- Graphic T-Shirt – ₱499 – 
+    White (In stock) – Sizes: S, M, L
+    Black (In stock) – Sizes: S, M, L, XL
+    Olive (In stock) – Sizes: M, L
+- Slim Fit Jeans – ₱1,199 – 
+    Indigo (In stock) – Sizes: 28, 30, 32, 34
+    Black (In stock) – Sizes: 30, 32, 34, 36
+- Chino Pants – ₱1,099 – 
+    Khaki (In stock) – Sizes: 30, 32, 34
+    Navy (In stock) – Sizes: 30, 32, 34, 36
+- Formal Blazer – ₱2,499 – 
+    Charcoal (Out of stock) – Sizes: M, L
+    Navy (Out of stock) – Sizes: M, L, XL
+- Leather Belt – ₱599 – 
+    Brown (In stock) – Sizes: 32, 34, 36
+    Black (In stock) – Sizes: 32, 34, 36, 38
+- Sneakers – ₱1,999 – 
+    White (In stock) – Sizes: 40, 41, 42, 43
+    Black (In stock) – Sizes: 40, 41, 42
+    Grey (In stock) – Sizes: 41, 42, 43
+- Loafers – ₱2,199 – 
+    Brown (In stock) – Sizes: 40, 41, 42
+    Tan (In stock) – Sizes: 40, 41, 42
+- Sandals – ₱899 – 
+    Tan (Out of stock) – Sizes: 40, 41, 42
+    Black (Out of stock) – Sizes: 41, 42
+- Sports Watch – ₱3,499 – 
+    Black (In stock) – Sizes: One size
+    Silver (In stock) – Sizes: One size
+
+Women's Products:
+- Floral Summer Dress – ₱1,299 – 
+    Pink (In stock) – Sizes: S, M, L
+    White (In stock) – Sizes: S, M, L, XL
+    Blue (In stock) – Sizes: M, L, XL
+- Evening Gown – ₱3,499 – 
+    Red (In stock) – Sizes: S, M, L
+    Black (In stock) – Sizes: M, L, XL
+- Casual Blouse – ₱699 – 
+    White (In stock) – Sizes: S, M, L
+    Beige (In stock) – Sizes: S, M, L
+    Navy (In stock) – Sizes: M, L
+- Silk Blouse – ₱1,099 – 
+    Ivory (In stock) – Sizes: S, M
+    Black (Out of stock) – Sizes: S, M, L
+    Blush (In stock) – Sizes: S, M, L
+- Skinny Jeans – ₱1,099 – 
+    Indigo (In stock) – Sizes: 26, 28, 30
+    Black (In stock) – Sizes: 26, 28, 30, 32
+- Wide Leg Pants – ₱1,299 – 
+    Cream (In stock) – Sizes: S, M, L
+    Olive (In stock) – Sizes: S, M, L
+- Leather Handbag – ₱2,799 – 
+    Black (In stock) – Sizes: One size
+    Tan (In stock) – Sizes: One size
+    Wine (Out of stock) – Sizes: One size
+- Crossbody Bag – ₱1,499 – 
+    Red (Out of stock) – Sizes: One size
+    Black (Out of stock) – Sizes: One size
+- High Heels – ₱1,899 – 
+    Black (In stock) – Sizes: 36, 37, 38, 39
+    Nude (In stock) – Sizes: 36, 37, 38
+    Red (In stock) – Sizes: 36, 37, 38
+- Sneakers – ₱1,799 – 
+    White (In stock) – Sizes: 36, 37, 38, 39
+    Pink (In stock) – Sizes: 36, 37, 38
+- Flat Sandals – ₱899 – 
+    Brown (In stock) – Sizes: 36, 37, 38
+    Gold (In stock) – Sizes: 36, 37, 38
+    Black (In stock) – Sizes: 36, 37, 38, 39
+- Cardigan Sweater – ₱1,099 – 
+    Grey (Out of stock) – Sizes: S, M, L
+    Navy (Out of stock) – Sizes: M, L
+
+Example conversation:
+User: Do you have the denim jacket in black, size L?
+Bot: Product: Denim Jacket
+     Price: ₱1,499
+     Available colors & sizes:
+       - Light Blue (In stock): S, M, L, XL
+       - Dark Blue (In stock): M, L, XL
+       - Black (Out of stock): M, L
+     Recommendation: Black in size L is currently out of stock — would you like Dark Blue instead or to be notified when Black is back?
+
+
 Store Location & Hours
 Q: Where is the nearest Jumpstart store?
 A: Kindly share your city or the nearest mall, and I’ll check the closest branch for you.
@@ -239,9 +360,12 @@ Examples:
 “Thank you for waiting. Here’s what I found.”
 “Please allow me a moment to assist you.”
 
+
+
+
 `;
 
-const API_KEY = "PUT YOUR API KEY HERE";
+const API_KEY = "AIzaSyAosipNYDrMFWP8ZZFrDoCJSQbDfp6kyDo"
 const genAI = new GoogleGenerativeAI (API_KEY);
 const model = genAI.getGenerativeModel({ 
     model:"gemini-1.5-flash", 
